@@ -2145,7 +2145,7 @@ class Bytes(TraitType):
         if len(s) >= 3:
             # handle deprecated b"string"
             for quote in ('"', "'"):
-                if s[:2] == f"b{quote}" and s[-1] == quote:
+                if s[:2] == ("b" + str(quote)) and s[-1] == quote:
                     old_s = s
                     s = s[2:-1]
                     warn(
@@ -2500,7 +2500,7 @@ class Container(Instance):
     def from_string(self, s):
         """Load value from a single string"""
         if not isinstance(s, str):
-            raise TraitError(f"Expected string, got {s!r}")
+            raise TraitError("Expected string, got {s!r}")
         try:
             test = literal_eval(s)
         except Exception:
@@ -2912,7 +2912,7 @@ class Dict(Instance):
     def from_string(self, s):
         """Load value from a single string"""
         if not isinstance(s, str):
-            raise TypeError(f"from_string expects a string, got {repr(s)} of type {type(s)}")
+            raise TypeError("from_string expects a string, got {repr(s)} of type {type(s)}")
         try:
             return self.from_string_list([s])
         except Exception:

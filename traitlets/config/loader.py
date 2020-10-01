@@ -441,7 +441,7 @@ class DeferredConfigList(list, DeferredConfig):
         else:
             # only allow one item
             if len(self) > 1:
-                raise ValueError(f"{trait.name} only accepts one value, got {len(self)}: {list(self)}")
+                raise ValueError("{trait.name} only accepts one value, got {len(self)}: {list(self)}")
             src = self[0]
             cast = trait.from_string
 
@@ -831,7 +831,7 @@ class ArgParseConfigLoader(CommandLineConfigLoader):
         if flags is not _deprecated:
             warnings.warn(
                 "The `flag` argument to load_config is deprecated since Traitlets "
-                f"5.0 and will be ignored, pass flags the `{type(self)}` constructor.",
+                "5.0 and will be ignored, pass flags the `{type(self)}` constructor.",
                 DeprecationWarning,
                 stacklevel=2,
             )
@@ -1041,7 +1041,7 @@ class KVArgParseConfigLoader(ArgParseConfigLoader):
                 # DeferredList->list, etc
                 if isinstance(rhs, DeferredConfig):
                     rhs = rhs._super_repr()
-                raise ArgumentError(f"Error loading argument {lhs}={rhs}, {e}")
+                raise ArgumentError("Error loading argument {lhs}={rhs}, {e}")
 
         for subc in self.parsed_data._flags:
             self._load_flag(subc)

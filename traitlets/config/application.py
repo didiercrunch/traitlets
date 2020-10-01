@@ -202,7 +202,7 @@ class Application(SingletonConfigurable):
         _log_handler = self._get_log_handler()
         if not _log_handler:
             warnings.warn(
-                f"No Handler found on {self.log}, setting log_format will have no effect",
+                "No Handler found on {self.log}, setting log_format will have no effect",
                 RuntimeWarning,
             )
             return

@@ -443,8 +443,8 @@ class LoggingConfigurable(Configurable):
         if not isinstance(proposal.value, (logging.Logger, logging.LoggerAdapter)):
             # warn about unsupported type, but be lenient to allow for duck typing
             warnings.warn(
-                f"{self.__class__.__name__}.log should be a Logger or LoggerAdapter,"
-                f" got {proposal.value}."
+                "{self.__class__.__name__}.log should be a Logger or LoggerAdapter,"
+                " got {proposal.value}."
             )
         return proposal.value
 
